@@ -1,4 +1,5 @@
 import FilmList from "./FilmList";
+import Film from "./Film";
 
 function App() {
   return (
