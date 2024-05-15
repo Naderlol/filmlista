@@ -10,7 +10,7 @@ function StarRating({ rating }) {
       stars.push(<span key={i}>&nbsp;</span>);
     }
   }
-  return <div>{stars}</div>;
+  return <div className="star-rating">{stars}</div>;
 }
 
 export default StarRating;

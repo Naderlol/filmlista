@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
 import Film from "./Film";
+import SortByTitle from "./SortByTitle";
+import SortByRating from "./SortByRating";
 
 export default function FilmList() {
   const [films, setFilms] = useState([
@@ -23,6 +25,11 @@ export default function FilmList() {
       rating: parseInt(rating),
     };
 
+    if (inputRef.current.value === "" || ratingRef.current.value === "0") {
+      alert("Du måste ange både en titel och ett betyg");
+      return;
+    }
+
     setFilms([...films, newFilm]);
     formRef.current.reset();
   }
@@ -30,6 +37,18 @@ export default function FilmList() {
   function deleteItem(id) {
     setFilms(films.filter((item) => item.id !== id));
   }
+
+  const sortByTitle = () => {
+    const sortedFilms = [...films].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
+    setFilms(sortedFilms);
+  };
+
+  const sortByRating = () => {
+    const sortedFilms = [...films].sort((a, b) => b.rating - a.rating);
+    setFilms(sortedFilms);
+  };
 
   return (
     <div>
@@ -45,7 +64,11 @@ export default function FilmList() {
           />
 
           <label htmlFor="rating-field">Betyg:</label>
-          <select type="text" id="rating-field" className="form-control" ref={ratingRef}>
+          <select
+            type="text"
+            id="rating-field"
+            className="form-control"
+            ref={ratingRef}>
             <option value="0">Välj betyg här...</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -59,6 +82,10 @@ export default function FilmList() {
           </button>
         </fieldset>
       </form>
+      <div>
+        <SortByTitle sortByTitle={sortByTitle} />
+        <SortByRating sortByRating={sortByRating} />
+      </div>
       <h1>Inlagda filmer</h1>
       <ul className="list-group">
         {films.map((film) => (
