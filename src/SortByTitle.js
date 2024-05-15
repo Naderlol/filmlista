@@ -1,8 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const SortByTitle = ({ sortByTitle }) => {
   return (
-    <button onClick={sortByTitle}>Sortera efter titel</button>
+    <button className="btn btn-primary mt-2" onClick={sortByTitle}>
+      Alfabetisk ordning
+    </button>
   );
 };
 

@@ -82,16 +82,16 @@ export default function FilmList() {
           </button>
         </fieldset>
       </form>
-      <div>
-        <SortByTitle sortByTitle={sortByTitle} />
-        <SortByRating sortByRating={sortByRating} />
-      </div>
       <h1>Inlagda filmer</h1>
       <ul className="list-group">
         {films.map((film) => (
           <Film key={film.id} item={film} deleteItem={deleteItem} />
         ))}
       </ul>
+      <div>
+        <SortByTitle sortByTitle={sortByTitle} />
+        <SortByRating sortByRating={sortByRating} />
+      </div>
     </div>
   );
 }

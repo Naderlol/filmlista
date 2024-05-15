@@ -1,8 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const SortByRating = ({ sortByRating }) => {
   return (
-    <button onClick={sortByRating}>Sortera efter betyg</button>
+    <button className="btn btn-primary mx-2 mt-2" onClick={sortByRating}>
+      Betygsordning
+    </button>
   );
 };
 
